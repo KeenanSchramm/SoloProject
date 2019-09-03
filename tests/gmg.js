@@ -19,17 +19,32 @@ module.exports = {
     'Logo': browser => {
         gmg
             .click('@firstGame')
+            .expect.url('https://www.greenmangaming.com/').to.not.equal('https://www.greenmangaming.com/')//3
+        gmg
+            .click('@logoBtn')
+            .verify.urlEquals('https://www.greenmangaming.com/') //4
+         gmg
+            .click('@thirdGame')
+            .expect.url('https://www.greenmangaming.com/').to.not.equal('https://www.greenmangaming.com/')//5
+        gmg 
+            .click('@logoBtn')
+            .verify.urlEquals('https://www.greenmangaming.com/')//6    
+    },
+    //whirligig element no longer available as of 9/3/2019
+    /*'Logo': browser => {
+        gmg
+            .click('@firstGame')
             .expect.element('@whirligig').to.not.be.present //3
         gmg
             .click('@logoBtn')
             .expect.element('@whirligig').to.be.present //4
-        gmg
+         gmg
             .click('@thirdGame')
             .verify.elementNotPresent('@whirligig') //5
             .click('@logoBtn')
             .verify.elementPresent('@whirligig')//6
             .pause(1000)     
-    },
+    },*/
 
     'Hot deals': browser => {
         gmg
@@ -48,12 +63,12 @@ module.exports = {
             .pause(2000)
             .click('@logoBtn')
             .useXpath()
-            .click('(//div[@class="col-xs-12 col-sm-4 module"])[4]')
+            .click('(//div[@class="col-xs-12 col-sm-4 module"])[3]')
             .click('@addToCart')
             .pause(2000)
             .click('@logoBtn')
-            .useXpath()
-            .click('(//div[@class="col-xs-12 col-sm-4 module"])[7]')
+            .click('@hotDeals')
+            .click('(//div[@class="col-xs-12 col-sm-4 module"])[5]')
             .click('@addToCart')
             .pause(2000)
             .click('@logoBtn')
@@ -66,4 +81,16 @@ module.exports = {
             .pause(1000)
 
     },
+
+    /*'agever': browser => {
+            gmg
+                .resizeWindow(1280, 1000)
+                .setValue('@searchInput', "Borderlands 2")
+                .click('@searchSubmit')
+                .click('@resultClick')
+                .pause(3000)
+                .ageVerify()
+                .pause(10000)
+               
+    },*/ // cant get it to click the continue button
 }

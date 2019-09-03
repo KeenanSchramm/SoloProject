@@ -1,5 +1,23 @@
 let gmgCommands = {
-    
+   /* ageVerify: function () {
+        this
+            .api.element('tag name', '@ageVerifyPopUp', function (result) {
+                if (result = 'Present') {
+                    this
+                    console.log('Verifying age')
+                    this
+
+                        .useXpath()
+                        .click('//select[@id="day"]/option[@label="05"]')
+                        .click('//select[@id="month"]/option[@label="05"]')
+                        .click('//select[@id="year"]/option[@label="1993"]')
+                        .verify.elementPresent('@ageSubmit')
+                        
+                }
+            })
+        return this
+
+    }*/ //cant get it to click the continue button
 
 }
 
@@ -63,12 +81,32 @@ module.exports = {
             selector: '(//button[@class="btn btn-block btn-primary"])[3]',
             locateStrategy: 'xpath'
         },
-        cart:{
+        cart: {
             selector: '(//div[@class="dropdown hidden-xs full-cart-dropdown"])',
             locateStrategy: 'xpath'
         },
-        price:{
+        price: {
             selector: '(//price[@amount="(order||basket).total.final"]//span)[1]',
+            locateStrategy: 'xpath'
+        },
+        ageVerifyPopUp: {
+            selector: '//ng-include[@ng-if="loadAgeVerificationModal"]',
+            locateStrategy: 'xpath'
+        },
+        ageDay: {
+            selector: '(//div[@class="col-xs-4 dropdown"])[1]',
+            locateStrategy: 'xpath'
+        },
+        ageMonth: {
+            selector: '(//div[@class="col-xs-4 dropdown"])[2]',
+            locateStrategy: 'xpath'
+        },
+        ageYear: {
+            selector: '(//div[@class="col-xs-4 dropdown"])[3]',
+            locateStrategy: 'xpath'
+        },
+        ageSubmit: {
+            selector: '//div/button[@ng-click="ageVerification.setDateOfBirth()"]',
             locateStrategy: 'xpath'
         },
         // example:{
