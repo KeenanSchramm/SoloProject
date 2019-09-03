@@ -100,7 +100,11 @@ let gmgCommands = {
                         .click('//select[@id="year"]/option[@label="1993"]')
                     self
                         .verify.elementPresent('@ageSubmit')
+                        .verify.visible('@ageSubmit')
+                        .moveToElement('@ageSubmit',10,10)
                         .click('@ageSubmit')
+                        //.submitForm('//div[@class="form-group"]')
+                        
                         
                 }
             })
