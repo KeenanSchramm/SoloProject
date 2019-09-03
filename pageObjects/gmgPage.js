@@ -1,23 +1,112 @@
 let gmgCommands = {
-   /* ageVerify: function () {
+    signIn:  function (){
+        var self = this
+        this
+            .click('@signInBtn')
+            .pause(1000)
+            .sendKeys('@emailInput','t')
+            .pause(100)
+            .sendKeys('@emailInput','e')
+            .pause(100)
+            .sendKeys('@emailInput','s')
+            .pause(100)
+            .sendKeys('@emailInput','t')
+            .pause(100)
+            .sendKeys('@emailInput','e')
+            .pause(100)
+            .sendKeys('@emailInput','r')
+            .pause(100)
+            .sendKeys('@emailInput','8')
+            .pause(100)
+            .sendKeys('@emailInput','1')
+            .pause(100)
+            .sendKeys('@emailInput','0')
+            .pause(100)
+            .sendKeys('@emailInput','6')
+            .pause(100)
+            .sendKeys('@emailInput','3')
+            .pause(100)
+            .sendKeys('@emailInput','@')
+            .pause(100)
+            .sendKeys('@emailInput','g')
+            .pause(100)
+            .sendKeys('@emailInput','m')
+            .pause(100)
+            .sendKeys('@emailInput','a')
+            .pause(100)
+            .sendKeys('@emailInput','i')
+            .pause(100)
+            .sendKeys('@emailInput','l')
+            .pause(100)
+            .sendKeys('@emailInput','.')
+            .pause(100)
+            .sendKeys('@emailInput','c')
+            .pause(100)
+            .sendKeys('@emailInput','o')
+            .pause(100)
+            .sendKeys('@emailInput','m')
+            //password input
+            .sendKeys('@passInput','t')
+            .pause(100)
+            .sendKeys('@passInput','e')
+            .pause(100)
+            .sendKeys('@passInput','s')
+            .pause(100)
+            .sendKeys('@passInput','t')
+            .pause(100)
+            .sendKeys('@passInput','e')
+            .pause(100)
+            .sendKeys('@passInput','r')
+            .pause(100)
+            .sendKeys('@passInput','a')
+            .pause(100)
+            .sendKeys('@passInput','c')
+            .pause(100)
+            .sendKeys('@passInput','c')
+            .pause(100)
+            .sendKeys('@passInput','o')
+            .pause(100)
+            .sendKeys('@passInput','u')
+            .pause(100)
+            .sendKeys('@passInput','n')
+            .pause(100)
+            .sendKeys('@passInput','t')
+            .pause(100)
+            .sendKeys('@passInput','8')
+            .pause(100)
+            .sendKeys('@passInput','1')
+            .pause(100)
+            .sendKeys('@passInput','0')
+            .pause(100)
+            .sendKeys('@passInput','6')
+            .pause(100)
+            .sendKeys('@passInput','3')
+            .click('@signInSubmit')
+            .pause(10000)
+
+    },
+    ageVerify: function () {
+        var self = this
         this
             .api.element('tag name', '@ageVerifyPopUp', function (result) {
                 if (result = 'Present') {
-                    this
+                    self
                     console.log('Verifying age')
-                    this
+                    self
 
                         .useXpath()
                         .click('//select[@id="day"]/option[@label="05"]')
                         .click('//select[@id="month"]/option[@label="05"]')
                         .click('//select[@id="year"]/option[@label="1993"]')
+                    self
                         .verify.elementPresent('@ageSubmit')
+                        .click('@ageSubmit')
                         
                 }
             })
         return this
 
-    }*/ //cant get it to click the continue button
+    } //cant get it to click the continue button
 
 }
 
@@ -106,7 +195,31 @@ module.exports = {
             locateStrategy: 'xpath'
         },
         ageSubmit: {
-            selector: '//div/button[@ng-click="ageVerification.setDateOfBirth()"]',
+            selector: '//button[@class="btn btn-success"]',
+            locateStrategy: 'xpath'
+        },
+        signInBtn:{
+            selector: '//div[@class="sign-in-btn"]',
+            locateStrategy: 'xpath'
+        },
+        emailInput:{
+            selector: '(//input[@type="email"])[1]',
+            locateStrategy: 'xpath'
+        },
+        passInput:{
+            selector: '(//input[@type="password"])[1]',
+            locateStrategy: 'xpath'
+        },
+        signInSubmit:{
+            selector: '//button[@validate-form="signInForm"]',
+            locateStrategy: 'xpath'
+        },
+        reqBlock:{
+            selector: '//div[@class="langBlock_en"]',
+            locateStrategy: 'xpath'
+        },
+        captchaBox:{
+            selector: '//div[@id="captcha-box"]',
             locateStrategy: 'xpath'
         },
         // example:{
@@ -117,5 +230,14 @@ module.exports = {
         //     selector: '',
         //     locateStrategy: 'xpath'
         // },
+        // example:{
+        //     selector: '',
+        //     locateStrategy: 'xpath'
+        // },
+        // example:{
+        //     selector: '',
+        //     locateStrategy: 'xpath'
+        // },
+
     }
 }

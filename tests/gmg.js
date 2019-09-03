@@ -6,6 +6,7 @@ module.exports = {
         gmg.navigate()
     },
 
+    
     'Search Bar': browser => {
             gmg
                 .resizeWindow(1280, 1000)
@@ -30,21 +31,6 @@ module.exports = {
             .click('@logoBtn')
             .verify.urlEquals('https://www.greenmangaming.com/')//6    
     },
-    //whirligig element no longer available as of 9/3/2019
-    /*'Logo': browser => {
-        gmg
-            .click('@firstGame')
-            .expect.element('@whirligig').to.not.be.present //3
-        gmg
-            .click('@logoBtn')
-            .expect.element('@whirligig').to.be.present //4
-         gmg
-            .click('@thirdGame')
-            .verify.elementNotPresent('@whirligig') //5
-            .click('@logoBtn')
-            .verify.elementPresent('@whirligig')//6
-            .pause(1000)     
-    },*/
 
     'Hot deals': browser => {
         gmg
@@ -73,16 +59,42 @@ module.exports = {
             .pause(2000)
             .click('@logoBtn')
             .click('@cart')
-            .verify.visible('(//li[@ng-repeat="item in basket.items"])[1]')
-            .verify.visible('(//li[@ng-repeat="item in basket.items"])[2]')
-            .verify.visible('(//li[@ng-repeat="item in basket.items"])[3]')
-            .expect.element('@price').text.to.not.equal('$0.00')
+            .verify.visible('(//li[@ng-repeat="item in basket.items"])[1]')//9
+            .verify.visible('(//li[@ng-repeat="item in basket.items"])[2]')//10
+            .verify.visible('(//li[@ng-repeat="item in basket.items"])[3]')//11
+            .expect.element('@price').text.to.not.equal('$0.00')//12
         gmg
             .pause(1000)
 
     },
+    'Captcha test': browser => {
+        gmg
+            .resizeWindow(1280,1000)
+            .signIn()
+        gmg
+            .verify.elementPresent('@reqBlock')
+            .verify.containsText('@reqBlock','Your request has been blocked for security reasons')
+            .verify.elementPresent('@captchaBox')
+    },
+    //test graveyard/ test in progress
+    /*
+    whirligig element no longer available as of 9/3/2019
+    'Logo': browser => {
+        gmg
+            .click('@firstGame')
+            .expect.element('@whirligig').to.not.be.present //3
+        gmg
+            .click('@logoBtn')
+            .expect.element('@whirligig').to.be.present //4
+         gmg
+            .click('@thirdGame')
+            .verify.elementNotPresent('@whirligig') //5
+            .click('@logoBtn')
+            .verify.elementPresent('@whirligig')//6
+            .pause(1000)     
+    },
 
-    /*'agever': browser => {
+    'agever': browser => {
             gmg
                 .resizeWindow(1280, 1000)
                 .setValue('@searchInput', "Borderlands 2")
@@ -90,7 +102,8 @@ module.exports = {
                 .click('@resultClick')
                 .pause(3000)
                 .ageVerify()
+                .pause(3000)
+                .click('@logoBtn')
                 .pause(10000)
-               
-    },*/ // cant get it to click the continue button
+    }, */ // cant get it to click the continue button
 }
